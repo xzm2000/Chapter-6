@@ -11,26 +11,23 @@ import android.database.sqlite.SQLiteOpenHelper;
  */
 public class TodoDbHelper extends SQLiteOpenHelper {
 
-    private static final String DB_NAME = "todo.db";
-    private static final int DB_VERSION = 2;
+    // DONE 定义数据库名、版本；创建数据库
 
+    public static final String DATABASE_NAME = "Todo.db";
     public TodoDbHelper(Context context) {
-        super(context, DB_NAME, null, DB_VERSION);
+        super(context, "todo", null, 1);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(TodoContract.SQL_CREATE_NOTES);
+        db.execSQL(TodoContract.CREATE_TODOLIST);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        for (int i = oldVersion; i < newVersion; i++) {
-            switch (i) {
-                case 1:
-                    db.execSQL(TodoContract.SQL_ADD_PRIORITY_COLUMN);
-                    break;
-            }
+        if (oldVersion <= 1 && newVersion > 1){
+            db.execSQL("ALTER TABLE " + TodoContract.TodoEntry.TABLE_NAME + " ADD " + TodoContract.TodoEntry.PRIORITY + " INTEGER");
         }
     }
+
 }

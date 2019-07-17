@@ -9,27 +9,27 @@ import android.provider.BaseColumns;
  */
 public final class TodoContract {
 
-    public static final String SQL_CREATE_NOTES =
-            "CREATE TABLE " + TodoNote.TABLE_NAME
-                    + "(" + TodoNote._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-                    + TodoNote.COLUMN_DATE + " INTEGER, "
-                    + TodoNote.COLUMN_STATE + " INTEGER, "
-                    + TodoNote.COLUMN_CONTENT + " TEXT, "
-                    + TodoNote.COLUMN_PRIORITY + " INTEGER)";
-
-    public static final String SQL_ADD_PRIORITY_COLUMN =
-            "ALTER TABLE " + TodoNote.TABLE_NAME + " ADD " + TodoNote.COLUMN_PRIORITY + " INTEGER";
-
-    private TodoContract() {
+    // DONE 定义表结构和 SQL 语句常量
+    public static class TodoEntry implements BaseColumns {
+        public static final String TABLE_NAME = "todolist";
+        public static final String DATE = "date";
+        public static final String STATE = "state";
+        public static final String CONTENT= "content";
+        public static final String PRIORITY = "priority";
     }
 
-    public static class TodoNote implements BaseColumns {
-        public static final String TABLE_NAME = "note";
+    public static final String CREATE_TODOLIST =
+            "CREATE TABLE " + TodoEntry.TABLE_NAME +" (" +
+                    TodoEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    TodoEntry.DATE + " INTEGER," +
+                    TodoEntry.STATE + " INTEGER," +
+                    TodoEntry.CONTENT + " TEXT," +
+                    TodoEntry.PRIORITY + " INTEGER)";
 
-        public static final String COLUMN_DATE = "date";
-        public static final String COLUMN_STATE = "state";
-        public static final String COLUMN_CONTENT = "content";
-        public static final String COLUMN_PRIORITY = "priority";
+    public static final String DELETE_TODOLIST =
+            "DROP TABLE IF EXISTS " + TodoEntry.TABLE_NAME;
+
+    private TodoContract() {
     }
 
 }

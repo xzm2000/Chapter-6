@@ -16,6 +16,7 @@
         android:padding="4dp"
         android:textColor="#1e1e1e" />
 
+
     <RadioGroup
         android:id="@+id/radio_group"
         android:layout_width="match_parent"
@@ -26,19 +27,20 @@
             android:id="@+id/btn_high"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/priority_high" />
+            android:text="high" />
 
         <android.support.v7.widget.AppCompatRadioButton
             android:id="@+id/btn_medium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/priority_medium" />
+            android:text="medium" />
 
         <android.support.v7.widget.AppCompatRadioButton
             android:id="@+id/btn_low"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/priority_low" />
+            android:checked="true"
+            android:text="low" />
 
     </RadioGroup>
 
@@ -48,6 +50,5 @@
         android:layout_height="60dp"
         android:layout_marginTop="20dp"
         android:text="@string/confirm" />
-
 
 </LinearLayout>

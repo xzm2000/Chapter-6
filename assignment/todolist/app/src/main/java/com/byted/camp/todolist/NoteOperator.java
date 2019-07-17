@@ -1,6 +1,5 @@
 package com.byted.camp.todolist;
 
-
 import com.byted.camp.todolist.beans.Note;
 
 /**
